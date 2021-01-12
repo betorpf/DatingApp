@@ -17,8 +17,8 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getUsers();
     this.setCurrentUser();
+    //this.getUsers();
   }
 
   setCurrentUser() {
@@ -32,5 +32,4 @@ export class AppComponent implements OnInit {
       console.log(error);
     })
   }
-
 }
