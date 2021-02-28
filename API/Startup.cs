@@ -32,6 +32,17 @@ namespace API {
             services.AddAplicationServices(_config);
             services.AddControllers ();
             services.AddCors();
+            // services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            //     .AddJwtBearer(options => 
+            //     {
+            //         options.TokenValidationParameters = new TokenValidationParameters
+            //         {
+            //             ValidateIssuerSigningKey = true,
+            //             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["TokenKey"])),
+            //             ValidateIssuer = false,
+            //             ValidateAudience = false,
+            //         };
+            //     });
             services.AddIdentityServices(_config);
         }
 
@@ -49,7 +60,7 @@ namespace API {
             app.UseCors(policy => policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:4200"));
 
             app.UseAuthentication();
-            
+
             app.UseAuthorization ();
 
             app.UseEndpoints (endpoints => {
